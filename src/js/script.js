@@ -24,7 +24,7 @@ addBtn.addEventListener("click", function(event){
 function getCourses() {
     outputEl.innerHTML = "";
 
-    fetch("http://localhost/webbutv3/Moment5/rest")
+    fetch("https://studenter.miun.se/~jeno2011/writeable/DT173G/Moment5-1/rest.php")
     .then(response => response.json())
     .then(data =>{
        data.forEach(course =>{
@@ -60,7 +60,7 @@ function addCourse() {
         'syllabus': syllabus
     }
     // fetch med POST
-    fetch("http://localhost/webbutv3/Moment5/rest", {
+    fetch("https://studenter.miun.se/~jeno2011/writeable/DT173G/Moment5-1/rest.php", {
         method: 'POST',
         body: JSON.stringify(jsonStr),
     })
@@ -132,7 +132,7 @@ function updateCourse(id) {
         message.innerHTML = "Fyll i alla fält!"
     } else {
         // fetch med PUT
-        fetch("http://localhost/webbutv3/Moment5/rest?id=" + id, {
+        fetch("https://studenter.miun.se/~jeno2011/writeable/DT173G/Moment5-1/rest.php?id=" + id, {
             method: 'PUT',
             header:{
                 'Content-Type':'application/json'
@@ -162,7 +162,7 @@ function updateCourse(id) {
 
 // raderar kurs med motsvarande id
 function deleteCourse(id) {
-    fetch("http://localhost/webbutv3/Moment5/rest?id=" + id, {
+    fetch("https://studenter.miun.se/~jeno2011/writeable/DT173G/Moment5-1/rest.php?id=" + id, {
         method: 'DELETE',
     })
     .then(response =>{ 
