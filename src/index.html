@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <title>Moment 5</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Webbutveckling 3 - Moment 5</h1>
+
+        <h2>Lästa kurser</h2>
+        <div id="coursetable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kurskod</th>
+                        <th>Kursnamn</th>
+                        <th>Progression</th>
+                        <th>Kursplan</th>
+                    </tr>
+                </thead>
+                <tbody id="output">
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Lägg till kurs</h2>
+        <form id="form">
+            <div class ="formContainer">
+                <div class="formGroup">
+                    <label for="code">Kurskod:</label><br>
+                    <input type="text" name="code" id="code"><br>
+
+                    <label for="name">Kursnamn:</label><br>
+                    <input type="text" name="name" id="name"><br>
+                </div>
+                <div class="formGroup">
+                    <label for="progression">Progression:</label><br>
+                    <input type="text" name="progression" id="progression"><br>
+
+                    <label for="syllabus">Kursplan:</label><br>
+                    <input type="text" name="syllabus" id="syllabus"><br>
+                </div>
+            </div>
+            <button id="addBtn">Lägg till</button>
+            <button id="updateBtn">Uppdatera</button>
+        </form>
+        <!-- Meddelande som dyker upp under formulär -->
+        <p id="message"></p>
+    </div>
+    <footer>
+        <p>Moment 5 - Jesper Norrlander</p>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

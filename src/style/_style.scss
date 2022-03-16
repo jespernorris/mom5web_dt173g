@@ -1,0 +1,82 @@
+// universal
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+// container, rubriker & footer
+body {
+    max-width: $bodyWidth;
+    background-color: $lightGrey;
+    margin: 0 auto;
+
+    #content {
+        margin: 0 auto;
+
+        h1, h2, #message {
+            text-align: center;
+        }
+    }
+    
+    footer {
+        text-align: center;
+    }
+}
+
+// table med kurser
+#coursetable {
+    text-align: left;
+
+    table {
+        border-spacing: 0px;
+        border-bottom: $tableBorder;
+        margin: 0 auto;
+
+        th, td {
+            padding: 1em;
+        }
+
+        td {
+            border-top: $tableBorder;
+
+            button {
+                padding: 0.25em;
+                padding-left: 0.5em;
+                padding-right: 0.5em;
+            }
+        }
+
+        a {
+            color: blue;
+        }
+
+        // för att centrera A/B under progression
+        #progressionTable {
+            text-align: center;
+        }
+    }
+}
+
+// formulär för tillägg av kurser
+#form {
+    max-width: 50%;
+    margin: 0 auto;
+    .formContainer {
+        display: flex;
+
+        .formGroup {
+            margin: 0 auto;
+    
+            input {
+                padding: 0.5em;
+                margin-top: 0.5em;
+                margin-bottom: 1em;
+            }
+        }
+    }
+
+    #addBtn, #updateBtn {
+        padding: 0.5em;
+        width: 80%;
+        margin-left: 10%;
+    }
+}

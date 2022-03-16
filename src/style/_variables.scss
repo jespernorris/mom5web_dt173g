@@ -1,0 +1,12 @@
+// Colors
+$red: rgb(255, 0, 0);
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+$grey: rgb(190, 190, 190);
+$lightGrey: lighten($grey, 15%);
+
+// Width variables
+$bodyWidth: 60%;
+
+// Borders
+$tableBorder: 1px solid $black;
