@@ -39,7 +39,7 @@ function getCourses() {
        }) 
     })
     .catch(error => {
-        console.log('Error: ', error)
+        console.log('Error: ', error);
     })
 }
 
@@ -90,7 +90,7 @@ function addCourse() {
         syllabusInput.value = "";
     }) 
     .catch(error => {
-        console.log('Error: ', error)
+        console.log('Error: ', error);
     })
 }
 
@@ -125,6 +125,6 @@ function deleteCourse(id) {
         getCourses();
     })
     .catch(error => {
-        console.log('Error: ', error)
+        console.log('Error: ', error);
     })
 }
