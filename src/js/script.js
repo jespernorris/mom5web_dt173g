@@ -35,7 +35,6 @@ function getCourses() {
                 <td id="progressionTable">${course.progression}</td>
                 <td><a href="${course.syllabus}" target="_blank" >Webblänk </a></td>
                 <td><button id="${course.id}" onclick="deleteCourse('${course.id}')">Radera</button></td>
-                <td><button id="${course.id}" onclick="getCourse('${course.id}', '${course.code}', '${course.name}', '${course.progression}', '${course.syllabus}')">Redigera</button></td>
            </tr>`;
        }) 
     })
@@ -68,24 +67,27 @@ function addCourse() {
         response.json()
         // om text saknas i fält
         if(response.status === 400){
-            message.style.color = "rgb(212, 25, 0)";
+            message.style.color = "red";
             message.innerHTML = "Alla fält måste fyllas i!";
         } else {
             // lyckad tillägg av kurs
             if(response.status === 201) {
                 message.style.color = "green";
                 message.innerHTML = "Kursen lades till!";
-                codeInput.value = "";
-                nameInput.value = "";
-                progressionInput.value = "";
-                syllabusInput.value = "";
-                getCourses();
             // fel
             } else {
-                message.style.color = "rgb(212, 25, 0)";
+                message.style.color = "red";
                 message.innerHTML = "Kursen lades inte till!";
             }
         }
+    })
+    .then(data =>{
+        getCourses();
+        // efter att ha hämtat om de nya tillägget töms formuläret
+        codeInput.value = "";
+        nameInput.value = "";
+        progressionInput.value = "";
+        syllabusInput.value = "";
     }) 
     .catch(error => {
         console.log('Error: ', error)
@@ -108,56 +110,6 @@ function getCourse(id, code, name, progression, syllabus) {
         event.preventDefault();
         updateCourse(id);
     });
-}
-
-// uppdatera kurs med motsvarande id
-function updateCourse(id) {
-    // lagrar input i textfälten i variabel
-    let code = codeInput.value;
-    let name = nameInput.value;
-    let progression = progressionInput.value;
-    let syllabus = syllabusInput.value;
-
-    // används i json.stringify
-    let jsonStr = {
-        'code': code, 
-        'name': name, 
-        'progression': progression, 
-        'syllabus': syllabus
-    }
-
-    // alla fält måste vara ifyllda
-    if(code == "" || name == "" || progression == "" || syllabus == "") {
-        message.style.color = "red";
-        message.innerHTML = "Fyll i alla fält!"
-    } else {
-        // fetch med PUT
-        fetch("https://studenter.miun.se/~jeno2011/writeable/DT173G/Moment5-1/rest.php?id=" + id, {
-            method: 'PUT',
-            header:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(jsonStr),
-        })
-        .then(response => {
-            response.json()
-            if(response.status === 200) {
-                // lyckad uppdatering
-                message.innerHTML = "Kurs uppdaterad!";
-                message.style.color = "green";
-            } else {
-                // fel vid uppdatering
-                message.innerHTML = "Kurs ej uppdaterad!";
-                message.style.color = "red";
-            }
-        })
-        .then(data => {
-            location.reload();
-        })
-        .catch(error => {
-            console.log('Error', error);
-        })
-    }
 }
 
 // raderar kurs med motsvarande id
